@@ -109,6 +109,8 @@ export function EditTokenScene(props: Props) {
       <SceneHeader underline title={tokenId == null ? s.strings.title_add_token : s.strings.title_edit_token} />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContainer}>
         <OutlinedTextInput
+          autoCapitalize="characters"
+          autoCorrect={false}
           autoFocus={false}
           label={s.strings.addtoken_currency_code_input_text}
           marginRem={marginRem}
@@ -116,6 +118,8 @@ export function EditTokenScene(props: Props) {
           onChangeText={setCurrencyCode}
         />
         <OutlinedTextInput
+          autoCapitalize="words"
+          autoCorrect={false}
           autoFocus={false}
           label={s.strings.addtoken_name_input_text}
           marginRem={marginRem}
@@ -123,6 +127,7 @@ export function EditTokenScene(props: Props) {
           onChangeText={setDisplayName}
         />
         <OutlinedTextInput
+          autoCorrect={false}
           autoFocus={false}
           label={s.strings.addtoken_contract_address_input_text}
           marginRem={marginRem}
@@ -130,7 +135,9 @@ export function EditTokenScene(props: Props) {
           onChangeText={setContractAddress}
         />
         <OutlinedTextInput
+          autoCorrect={false}
           autoFocus={false}
+          keyboardType="numeric"
           label={s.strings.addtoken_denomination_input_text}
           marginRem={marginRem}
           value={decimalPlaces}

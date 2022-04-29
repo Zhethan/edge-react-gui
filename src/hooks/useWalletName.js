@@ -11,6 +11,11 @@ import { useEffect, useState } from '../types/reactHooks'
  */
 export function useWalletName(wallet: EdgeCurrencyWallet): string {
   const [name, setName] = useState(wallet.name)
-  useEffect(() => wallet.watch('name', setName), [wallet])
+
+  useEffect(() => {
+    setName(wallet.name)
+    return wallet.watch('name', setName)
+  }, [wallet])
+
   return name ?? sprintf(s.strings.my_crypto_wallet_name, wallet.currencyInfo.displayName)
 }

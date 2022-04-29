@@ -50,7 +50,10 @@ export function ManageTokensScene(props: Props) {
 
   // Subscribe to the wallet's enabled tokens:
   const [enabledTokenIds, setEnabledTokenIds] = useState<string[]>(wallet.enabledTokenIds)
-  useEffect(() => wallet.watch('enabledTokenIds', setEnabledTokenIds), [wallet])
+  useEffect(() => {
+    setEnabledTokenIds(wallet.enabledTokenIds)
+    return wallet.watch('enabledTokenIds', setEnabledTokenIds)
+  }, [wallet])
 
   // Optimize the enabled tokens:
   const enabledTokenSet = useMemo(() => new Set(enabledTokenIds), [enabledTokenIds])
